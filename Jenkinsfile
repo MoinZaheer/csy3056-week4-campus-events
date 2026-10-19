@@ -21,6 +21,7 @@ pipeline {
             steps {
                 bat 'echo Build Number: %BUILD_NUMBER% > build-info.txt'
                 archiveArtifacts artifacts: 'build-info.txt'
+            //testing a change to the Auto Trigger settings on  the branch
             }
         }
     }
