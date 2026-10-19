@@ -14,8 +14,11 @@ pipeline {
         stage('Package Release') {
             steps { bat 'python scripts/build_release.py' }
         }
+        stage('Build Metadata'){
+            steps {bat 'echo Build Number: %BUILD_NUMBER% > build-info.txt'}
+        }
         stage('Archive Release') {
-            steps { archiveArtifacts artifacts: 'dist/*.zip' }
+            steps { archiveArtifacts artifacts: 'dist/*.zip, build-info.txt' }
         }
     }
 }
